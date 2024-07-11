@@ -1,8 +1,11 @@
-import { useFeedbackItemsContext } from "../../lib/hooks";
+import { useFeedbackItemsStore } from "../../stores/feedbackItemsStore";
 import HashtagItem from "./HashtagItem";
 
 function HashtagList() {
-  const { companyList, handleSelectCompany } = useFeedbackItemsContext();
+  const companyList = useFeedbackItemsStore((state) => state.companyList());
+  const handleSelectCompany = useFeedbackItemsStore(
+    (state) => state.handleSelectCompany
+  );
   return (
     <ul className="hashtags">
       {companyList.map((company) => (
